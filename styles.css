@@ -48,7 +48,7 @@
 	cursor: pointer;
 	display: inline-block;
 	font-weight: 800;
-    font-size: clamp(1.5rem, 2.979rem + 0.0672vw, 5rem);  color: #F9476B;
+    font-size: clamp(2.2rem, 1.3313rem + 2.7799vw, 4rem);color: #F9476B;
 	user-select: none;
 	line-height: .8;
 }
