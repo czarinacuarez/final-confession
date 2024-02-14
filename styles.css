@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+.body {
+    background: rgb(254,225,221);
+    background: linear-gradient(90deg, rgba(254,225,221,1) 0%, rgba(255,250,252,1) 100%);
+  }
+  
+#pink {
+   background-color: #FF8194;
+}
+
+#dark-pink{
+    background-color: #F9476B; /* button */
+}
+
+#red { 
+    background-color: #FC3E3E; 
+}
+
+#blue { 
+    background-color: #5D91F6; 
+}
+
+#green { background-color: #54B94B; 
+}
+
+#yellow {
+     background-color: #FFC034; 
+}
+
+#cream {
+    background-color: #FAF2E7; 
+}
+
+.creator {
+    color: #F9476B;
+}
+
+.animate{
+    text-align: center;
+    font-family: 'Inter';
+    font-weight: bold;
+    perspective: 1000px;
+
+}
+
+.animate span {
+	cursor: pointer;
+	display: inline-block;
+	font-weight: 800;
+    font-size: clamp(1.5rem, 2.979rem + 0.0672vw, 5rem);  color: #F9476B;
+	user-select: none;
+	line-height: .8;
+}
+
+.animate span.active {
+    animation: toplong 1.5s linear;
+}
+
+@keyframes toplong {
+	10%, 40% {
+		transform: translateY(-2vh) scaleY(1);
+	}
+	
+	90% {
+		transform: translateY(-2vh) scaleY(1.5);
+	}
+}

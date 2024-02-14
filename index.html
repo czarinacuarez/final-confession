@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Confession Wall</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"  rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1/firebase.js"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+
+
+<nav class="bg-white shadow-md dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="https://www.facebook.com/GDSCNUFV" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="gdsc logo.png" class="hidden md:block c:\Users\INTEL\Downloads\favicon_ioh-10 w-10" alt="" />
+        <img src="logo.png" class="h-12 w-12" alt="" />
+
+            <span class = "font-bold text-rose-500"> GDSCNUFV</span>
+    </a>
+    
+  <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+      <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="text-white bg-rose-400 hover:bg-rose-600 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Post a Confession</button>
+     
+  </div>
+  
+  </div>
+</nav>
+
+<body class="body">
+   
+<!-- Main modal -->
+<div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-xl max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    Send a Confession
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <form class="p-4 md:p-5" id ="confession">
+                <div class="grid gap-4 mb-4 grid-cols-2">
+                    <div class="col-span-2">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
+                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-600 focus:border-rose-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500" placeholder="Title of the Message" required>
+                        <input type="text" id="date" class="hidden border border-rose-400text-gray-900 text-sm rounded-lg focus:outline-none block w-full p-2.5" required>
+                    </div>
+                    <script>
+                        function getTodayDateTime() {
+                            const today = new Date();
+                            const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+                            return today.toLocaleDateString('en-US', options);
+                        }
+
+                        const dateInput = document.getElementById('date');
+                        dateInput.value = getTodayDateTime();
+                </script>
+                    <div class="col-span-2">
+                        <label for="msgContent" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Message</label>
+                        <textarea id="msgContent" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-rose-400 focus:border-rose-400 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-blue-500" placeholder="Write your message here" required></textarea>                    
+                    </div>
+                </div>
+                <button type="submit" id="submit" class="text-white inline-flex items-center bg-rose-400 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-400 nfont-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-rose-400 dark:focus:ring-blue-800">
+                    Submit Entry
+                </button>
+            </form>
+        </div>
+    </div>
+</div> 
+    <div class="md:py-20 py-32 flex flex-col items-center gap-1 ">
+
+
+        <div class = "grid grid-cols-1 md:grid-cols-2 py-10 md:p-10 gap-4">
+            <div class="flex justify-center flex-col align-center ">
+                <div class = "animate c">
+                    <span class = "">C</span>
+                    <span>O</span>
+                    <span>N</span>
+                    <span>F</span>
+                    <span>E</span>
+                    <span>S</span>
+                    <span>S</span>
+                    <span>I</span>
+                    <span>O</span>
+                    <span>N</span>
+
+                    <span class="ml-4">W</span>
+                    <span>A</span>
+                    <span>L</span>
+                    <span>L</span>
+
+                </div>
+                <p class="py-4 font-base text-gray-500 text-center md:text-left max-w-full px-6 lg:px-0 md:max-w-sm">It's about that time of the year you tell someone how much you feel about them.</p>
+                <a href="#" type="button" class="max-w-xs mx-auto md:mx-0 text-white bg-rose-400 hover:bg-rose-600 font-medium rounded-lg text-sm px-4 py-2 text-center" onclick="scrollToMainGrid()">See Confession Entries</a>
+
+            </div>
+
+            <div class = "md:max-w-lg max-w-xs mx-auto">
+               
+                    <img src="heart.png" alt="Heart" />
+            </div>
+    
+    
+        </div>
+
+        <p class="my-20 md:my-10 font-medium bg-rose-200 text-center mx-6 rounded-lg p-3 text-rose-600"> A GDSC NU Fairview x Codability Tech Student Organization Valentines Special Project </p>
+
+    
+        <div class="w-full px-5 lg:w-1/3">
+            <div class="relative">
+                <label for="simple-search" class="sr-only">Search</label>
+                <div class="relative w-full">
+                    <input type="text" id="simple-search" class="bg-gray-50 border border-rose-300 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-500 dark:focus:border-rose-500" placeholder="Search title.." required>
+                </div>
+                <svg class="absolute text-rose-200 left-3 top-[50%] transform -translate-y-1/2 fill-current text-neutral-500 w-6 h-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+            </div>
+        </div>
+        
+   
+
+
+        <div id="main-grid" class = "grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 py-16 px-10 md:px-15 gap-5 lg:gap-8 ">
+
+          <!-- Modal container -->
+        <div id="customModal" class="modal  fixed top-0 left-0 w-full lg:px-5 h-full flex px-5 lg:px-0 items-center justify-center overflow-hidden hidden z-50">
+            <div class="modal-overlay fixed top-0 left-0 w-full h-full bg-black opacity-50"></div>
+            <div class="modal-content bg-white z-10 p-8 border border-gray-200 rounded-lg shadow-md">
+
+                <div class = "py-3 border-b  ">
+                    <h2 id="to-modal-content" class="text-xl font-semibold text-rose-400 ">To: Modal Title</h2>
+                    <p id="date-modal-content" class="text-sm text-gray-400"></p>
+                </div>
+              
+
+                <div class = "py-4" >
+                    <div id="message-container-modal" class="space-y-4">
+                        <p id="message-modal-content" class="text-lg lg:max-w-5xl text-center leading-relaxed text-gray-500 dark:text-gray-400">
+                            Modal Content Goes Here
+                        </p>
+                    </div>
+                </div>
+
+                <div class = "flex items-center justify-center">
+                    <button id="closeModalBtn" class="text-white bg-rose-400 hover:bg-rose-600  px-4 py-2 rounded-lg mt-4" onclick="closeModal()">Close</button>
+                </div>
+                
+            </div>
+        </div>
+
+        <script>
+            function scrollToMainGrid() {
+                var mainGrid = document.getElementById('main-grid');
+                if (mainGrid) {
+                    mainGrid.scrollIntoView({ behavior: 'smooth' });
+                }
+                }
+            // Function to close the modal
+            function closeModal() {
+                document.getElementById('customModal').classList.add('hidden');
+            }
+        </script>
+
+        </div>
+       
+       
+     
+
+
+    <footer class="fixed bottom-0 shadow-md left-0 z-20 w-full p-4  text-rose-400 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
+        <span class="text-sm text-rose-400 sm:text-center">© 2024 <a href="" class="hover:underline">Google Developer Student Clubs NU Fairview</a> | All Rights Reserved.
+        </span>
+        <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+            <li>
+                <a href="#" class="hover:underline text-rose-400 me-4 md:me-6">Connect with us:</a>
+            </li>
+            <li>
+                <a href="#" class=" me-4 md:me-6 text-rose-400 cursor-pointer"><i class="fa-brands fa-facebook"></i>
+                </a>
+            </li>
+        </ul>
+    </footer>
+    <script>
+        function openModal() {
+            document.getElementById('customModal').classList.remove('hidden');
+        }
+    
+        function closeModal() {
+            document.getElementById('customModal').classList.add('hidden');
+        }
+    
+        document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+    
+
+        const spans = document.querySelectorAll('.animate span');
+    
+        spans.forEach((span, idx) => {
+            span.addEventListener('click', (e) => {
+                e.target.classList.add('active');
+            });
+            span.addEventListener('animationend', (e) => {
+                e.target.classList.remove('active');
+            });
+            
+            // Initial animation
+            setTimeout(() => {
+                span.classList.add('active');
+            }, 100 * (idx+1))
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="read.js"></script>
+
+</body>

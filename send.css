@@ -1,0 +1,132 @@
+
+.body {
+  background: rgb(254,225,221);
+  background: linear-gradient(90deg, rgba(254,225,221,1) 0%, rgba(255,250,252,1) 100%);
+}
+.custom-radio {
+    width: 1.4em; 
+    height: 1.4em; 
+    appearance: none;
+    border: 2px solid; 
+    border-radius: 9999px; 
+    outline: none;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+  }
+
+  #red {
+    border-color: rgb(252 165 165); /* red 300 */
+  }
+
+  #yellow {
+    border-color:  rgb(254 240 138); /* yellow 200 */
+  }
+
+  #blue {
+    border-color: rgb(165 243 252); /* cyan-200 */
+  }
+
+  #purple {
+    border-color: rgb(221 214 254);; /* violet 200 */
+  }
+
+  #pink{
+    border-color: rgb(251 207 232);/* pink 200 */
+  }
+
+  #green{
+    border-color: rgb(167 243 208); /* emerald 200 */
+  }
+
+  #red:checked {
+    background-color: rgb(252 165 165); /* Red background when checked */
+  }
+
+  #yellow:checked {
+    background-color:  rgb(254 240 138); /* Yellow background when checked */
+  }
+
+  #blue:checked {
+    background-color: rgb(165 243 252); /* Blue background when checked */
+  }
+
+  #purple:checked {
+    background-color: rgb(221 214 254);; /* Purple background when checked */
+  }
+
+  #pink:checked{
+    background-color: rgb(251 207 232);
+  }
+
+  #green:checked{
+    background-color: rgb(167 243 208); /* Green background when checked */
+  }   
+
+
+
+
+#pink-nav {
+    background-color: #FF8194;
+ }
+ 
+ #dark-pink{
+     background-color: #F9476B; /* button */
+ }
+ 
+ #red-logo { 
+     background-color: #FC3E3E; 
+ }
+ 
+ #blue-logo { 
+     background-color: #5D91F6; 
+ }
+ 
+ #green-logo { background-color: #54B94B; 
+ }
+ 
+ #yellow-logo {
+      background-color: #FFC034; 
+ }
+ 
+ #text-pink{
+     color: #F9476B;
+ }
+
+.custom-shape-divider-top-1707634829 {
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    overflow: hidden;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-top-1707634829 svg {
+    display: block;
+    width: calc(117% + 1.3px);
+    height: 132px;
+}
+
+.custom-shape-divider-top-1707634829 .shape-fill{
+    fill:  rgb(253 164 175);
+
+}
+
+.custom-shape-divider-bottom-1707636174 {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1707636174 svg {
+    display: block;
+    width: calc(117% + 1.3px);
+    height: 132px;
+}
+
+.custom-shape-divider-bottom-1707636174 .shape-fill {
+  fill: rgb(253 164 175);
+}

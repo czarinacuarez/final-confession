@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confession Wall</title>
+    <link rel="stylesheet" href="send.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/4b9ba14b0f.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"  rel="stylesheet" />
+
+</head>
+<nav class="bg-white shadow-md dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="https://www.facebook.com/GDSCNUFV" class="flex items-center space-x-3 rtl:space-x-reverse">
+              <div class="circle hidden md:block red w-7 h-7 rounded-full border-2 border-white" id="red"></div>
+              <div class="circle hidden md:block  yellow w-7 h-7 rounded-full border-2 border-white" id="yellow"></div>
+              <div class="circle hidden md:block  rose w-7 h-7 rounded-full border-2 border-white" id="blue"></div>
+              <div class="circle hidden md:block  green w-7 h-7 rounded-full border-2 border-white" id="green"></div>
+              <span class = "ps-2 font-bold text-rose-500"> GDSCNUFV</span>
+      </a>
+      
+    <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <a href = "send.html" type="button" class="text-white bg-rose-400 hover:bg-rose-600 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Post a Confession</a>
+        <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+          </svg>
+      </button>
+    </div>
+    <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+      <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border lg:bg-transparent border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <li>
+          <a href="index.html" class="block py-2 px-3 text-rose-600 bg-rose-200 rounded md:bg-transparent md:text-rose-400 md:p-0 ">Home</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+
+  
+<body class = "body mt-28 bg-gray-50">
+        <!-- <p class="ml-6 text-4xl text-pink-600 font-bold z-10"> Witty</p> -->
+    
+
+        <div>
+            <div class="custom-shape-divider-top-1707634829">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill"></path>
+                </svg>
+            </div>    
+        </div>
+       
+        <div class = "flex py-16 md:py-3 lg:py-4 items-center justify-center">
+            <form class="md:w-3/5 w-full  px-5" action="" id="confession">
+                <div class = "flex flex-col-2 justify-center gap-5">
+                    <div class = "lg:w-3/5 w-full">
+                        <h1 class = "text-3xl text-rose-400 font-bold py-2" id="">Create a Secret Message</h1>
+                        <div class ="py-2">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">To:</label>
+                            <input type="text"  id="name" class="border  focus:ring-rose-600  focus:border-rose-600 focus:outline-none border-rose-400 text-gray-900 text-sm rounded-lg  focus:outline-none block w-full p-2.5" required>
+                            <input type="text" id="date" class="hidden border border-rose-400text-gray-900 text-sm rounded-lg focus:outline-none block w-full p-2.5" required>
+
+                        </div>
+                        
+                        <script>
+                                function getTodayDateTime() {
+                                    const today = new Date();
+                                    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+                                    return today.toLocaleDateString('en-US', options);
+                                }
+
+                                const dateInput = document.getElementById('date');
+                                dateInput.value = getTodayDateTime();
+                        </script>
+
+                        <div class ="py-2">
+                            <label for="program" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Program:</label>
+                            <select name="program" id="program" class="border focus:ring-rose-600  focus:border-rose-600 focus:outline-none border-rose-400 focus:border-rose-600 focus:outline-none text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                                <option disabled selected value="" class=" border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5">Select a Program</option>
+                                <option value="Bachelor of Science in Information Technology" id="program" class=" border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full  p-2.5" required>Bachelor of Science in Information Technology</option>
+                                <option value="program" id="program" class=" border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5" required></option>
+                                <option value="program" id="program" class=" border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5" required></option>
+                            </select>
+                        </div>
+                        <div class ="py-2">
+                            <label for="msgContent" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Message:</label>
+                            <textarea name="msgContent" id="msgContent" class="border border-pink-600 text-gray-900   focus:ring-rose-600  focus:border-rose-600 focus:outline-none text-sm rounded-lg  block w-full p-2.5 focus:outline-none" placeholder="Type your message here" required></textarea>
+                        </div>
+                        <div class="flex items-center py-3">
+                            <button type="submit" id="submit" class="w-1/4  mx-auto text-white bg-rose-400 hover:bg-rose-600 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg text-sm px-5 py-3 text-center">Post</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="custom-shape-divider-bottom-1707636174">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+
+      
+
+        
+    <footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
+        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="" class="hover:underline">Google Developer Student Clubs NU Fairview</a> | All Rights Reserved.
+        </span>
+        <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+            <li>
+                <a href="#" class="hover:underline me-4 md:me-6">Connect with us:</a>
+            </li>
+            <li>
+                <a href="#" class=" me-4 md:me-6 cursor-pointer"><i class="fa-brands fa-facebook"></i>
+                </a>
+            </li>
+        </ul>
+    </footer>
+
+    
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./firebase.js"></script>
+    <script src="./script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+ 
+</body>
+</html>
